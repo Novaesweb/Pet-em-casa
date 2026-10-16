@@ -3,7 +3,7 @@
  * Configure o WhatsApp oficial abaixo no formato internacional, apenas números.
  * Exemplo fictício: "5551999999999". Não use um número de exemplo em produção.
  */
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = ""; // Fallback: configure pelo painel ou preencha este valor.
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector("#main-nav");
@@ -11,6 +11,54 @@ const bookingForm = document.querySelector("#booking-form");
 const bookingDate = document.querySelector("#booking-date");
 const serviceSelect = document.querySelector("#service-select");
 const feedback = document.querySelector("#booking-feedback");
+const DEFAULT_SITE_CONTENT = {
+  whatsappNumber: WHATSAPP_NUMBER,
+  gallery: [
+    { image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=85", alt: "Cachorrinho recebendo carinho", eyebrow: "CARINHO EM CADA DETALHE", title: "Um cuidado cheio de amor", description: "Nosso compromisso é deixar cada pet confortável e bem cuidado." },
+    { image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=85", alt: "Cachorro feliz", eyebrow: "BELEZA E BEM-ESTAR", title: "Prontinho para brilhar", description: "Banho e tosa pensados para respeitar o jeitinho de cada pet." },
+    { image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=800&q=85", alt: "Cachorro recebendo cuidados", eyebrow: "NOSSO JEITO DE CUIDAR", title: "Pequenos momentos, muito amor", description: "Um atendimento atencioso para pets e suas famílias." }
+  ],
+  services: [
+    { title: "Banho & cheirinho", description: "Um banho gostoso para renovar o pelo e deixar aquele cheirinho irresistível.", image: "🫧", eyebrow: "01 / FRESQUINHO" },
+    { title: "Tosa com cuidado", description: "Conforto, higiene e um visual caprichado, respeitando as necessidades do seu pet.", image: "✂️", eyebrow: "02 / ESTILOSO" },
+    { title: "Cuidados especiais", description: "Um tempinho extra de atenção para seu companheiro se sentir bem e seguro.", image: "🐾", eyebrow: "03 / BEM-CUIDADO" }
+  ]
+};
+function readSiteContent() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("petEmCasaContent") || "null");
+    return saved && typeof saved === "object" ? { ...DEFAULT_SITE_CONTENT, ...saved } : DEFAULT_SITE_CONTENT;
+  } catch { return DEFAULT_SITE_CONTENT; }
+}
+function renderShowcase() {
+  const grid = document.querySelector("#showcase-grid");
+  const content = readSiteContent();
+  if (grid && Array.isArray(content.gallery)) {
+    grid.innerHTML = "";
+    content.gallery.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "showcase-card";
+      const img = document.createElement("img");
+      img.src = item.image || "";
+      img.alt = item.alt || item.title || "Foto do mostruário Pet em Casa";
+      img.loading = "lazy";
+      img.onerror = () => { img.alt = "Imagem indisponível. Edite o endereço da foto no painel."; img.removeAttribute("src"); };
+      const body = document.createElement("div");
+      const eyebrow = document.createElement("span"); eyebrow.textContent = item.eyebrow || "NOSSO TRABALHO";
+      const title = document.createElement("h3"); title.textContent = item.title || "Cuidado pet";
+      const desc = document.createElement("p"); desc.textContent = item.description || "";
+      body.append(eyebrow, title, desc); card.append(img, body); grid.append(card);
+    });
+  }
+  const number = String(content.whatsappNumber || "").replace(/\D/g, "");
+  if (number.length >= 10) {
+    document.querySelectorAll(".floating-whatsapp").forEach((link) => {
+      link.href = "https://wa.me/" + number;
+      link.target = "_blank"; link.rel = "noopener noreferrer";
+    });
+  }
+}
+renderShowcase();
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
