@@ -10,6 +10,22 @@ const mainNav = document.querySelector("#main-nav");
 const bookingForm = document.querySelector("#booking-form");
 const bookingDate = document.querySelector("#booking-date");
 const serviceSelect = document.querySelector("#service-select");
+const ownerPhone = document.querySelector("#owner-phone");
+
+function formatBrazilianPhone(value) {
+  const digits = String(value || "").replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 2) return digits ? "(" + digits : "";
+  if (digits.length <= 6) return "(" + digits.slice(0, 2) + ") " + digits.slice(2);
+  if (digits.length <= 10) return "(" + digits.slice(0, 2) + ") " + digits.slice(2, 6) + "-" + digits.slice(6);
+  return "(" + digits.slice(0, 2) + ") " + digits.slice(2, 7) + "-" + digits.slice(7);
+}
+
+if (ownerPhone) {
+  ownerPhone.addEventListener("input", () => {
+    ownerPhone.value = formatBrazilianPhone(ownerPhone.value);
+    ownerPhone.setCustomValidity("");
+  });
+}
 const feedback = document.querySelector("#booking-feedback");
 const DEFAULT_SITE_CONTENT = {
   whatsappNumber: WHATSAPP_NUMBER,
@@ -111,6 +127,58 @@ document.querySelectorAll("[data-service]").forEach((link) => {
   });
 });
 
+
+const wizardSteps = [...document.querySelectorAll(".wizard-step")];
+const progressItems = [...document.querySelectorAll(".booking-progress span")];
+const backButton = document.querySelector("#booking-back");
+const nextButton = document.querySelector("#booking-next");
+const submitButton = document.querySelector("#booking-submit");
+let activeBookingStep = 1;
+
+function renderBookingStep(step) {
+  activeBookingStep = Math.max(1, Math.min(3, step));
+  wizardSteps.forEach((section) => {
+    const active = Number(section.dataset.step) === activeBookingStep;
+    section.hidden = !active;
+    section.classList.toggle("is-active", active);
+  });
+  progressItems.forEach((item, index) => {
+    item.classList.toggle("is-current", index + 1 === activeBookingStep);
+    item.classList.toggle("is-complete", index + 1 < activeBookingStep);
+    const marker = item.querySelector("b");
+    if (marker) marker.textContent = index + 1 < activeBookingStep ? "✓" : String(index + 1);
+  });
+  if (backButton) backButton.hidden = activeBookingStep === 1;
+  if (nextButton) nextButton.hidden = activeBookingStep === 3;
+  if (submitButton) submitButton.hidden = activeBookingStep !== 3;
+}
+function validateActiveStep() {
+  const section = wizardSteps.find((item) => Number(item.dataset.step) === activeBookingStep);
+  if (!section) return true;
+  const fields = [...section.querySelectorAll("input,select,textarea")];
+  for (const field of fields) {
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      field.focus();
+      return false;
+    }
+  }
+  return true;
+}
+if (wizardSteps.length) {
+  renderBookingStep(1);
+  nextButton?.addEventListener("click", () => {
+    if (validateActiveStep()) {
+      renderBookingStep(activeBookingStep + 1);
+      document.querySelector("#agendar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+  backButton?.addEventListener("click", () => {
+    renderBookingStep(activeBookingStep - 1);
+    document.querySelector("#agendar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 function showFeedback(message, type = "success") {
   feedback.hidden = false;
   feedback.className = "booking-feedback" + (type === "error" ? " error" : "");
@@ -135,6 +203,8 @@ if (bookingForm) {
       ownerName: String(data.get("ownerName") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
       petName: String(data.get("petName") || "").trim(),
+      breed: String(data.get("breed") || "").trim(),
+      petAge: String(data.get("petAge") || "").trim(),
       species: String(data.get("species") || ""),
       size: String(data.get("size") || ""),
       service: String(data.get("service") || ""),
@@ -143,12 +213,24 @@ if (bookingForm) {
       notes: String(data.get("notes") || "").trim()
     };
 
+    const phoneDigits = details.phone.replace(/\D/g, "");
+    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+      if (ownerPhone) {
+        ownerPhone.setCustomValidity("Informe um WhatsApp brasileiro com DDD e 10 ou 11 números.");
+        ownerPhone.reportValidity();
+      }
+      showFeedback("Confira o WhatsApp informado. Precisamos do DDD e de um número com 10 ou 11 dígitos.", "error");
+      return;
+    }
+
     const message = [
       "Olá! Gostaria de consultar um agendamento no Pet em Casa 🐾",
       "",
       "*Responsável:* " + details.ownerName,
       "*WhatsApp para retorno:* " + details.phone,
       "*Nome do pet:* " + details.petName,
+      details.breed ? "*Raça:* " + details.breed : "",
+      details.petAge ? "*Idade:* " + details.petAge : "",
       "*Pet:* " + details.species,
       "*Porte:* " + details.size,
       "*Serviço:* " + details.service,

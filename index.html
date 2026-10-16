@@ -21,7 +21,7 @@
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
-      <a href="#servicos">Serviços</a><a href="#mostruario">Mostruário</a><a href="#sobre">Nosso carinho</a><a href="#agendar">Agendamento</a>
+      <a href="#servicos">Serviços</a><a href="#agendar">Agendamento</a>
       <a class="nav-cta" href="#agendar">Agendar agora <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
@@ -50,16 +50,6 @@
     </section>
 
     
-    <section id="mostruario" class="showcase-section section-wrap">
-      <div class="section-heading"><span class="eyebrow">UM POUQUINHO DO NOSSO TRABALHO</span><h2>Momentos de cuidado <em>e fofura</em></h2><p>Conheça os cuidados e o capricho que queremos oferecer ao seu melhor amigo.</p></div>
-      <div id="showcase-grid" class="showcase-grid" aria-live="polite">
-        <article class="showcase-card"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=85" alt="Cachorrinho recebendo carinho" loading="lazy"><div><span>CARINHO EM CADA DETALHE</span><h3>Um cuidado cheio de amor</h3><p>Nosso compromisso é deixar cada pet confortável e bem cuidado.</p></div></article>
-        <article class="showcase-card"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=85" alt="Cachorro feliz" loading="lazy"><div><span>BELEZA E BEM-ESTAR</span><h3>Prontinho para brilhar</h3><p>Banho e tosa pensados para respeitar o jeitinho de cada pet.</p></div></article>
-        <article class="showcase-card"><img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=800&q=85" alt="Cachorro recebendo cuidados" loading="lazy"><div><span>NOSSO JEITO DE CUIDAR</span><h3>Pequenos momentos, muito amor</h3><p>Um atendimento atencioso para pets e suas famílias.</p></div></article>
-      </div>
-      <p class="showcase-hint">As fotos e descrições deste mostruário podem ser personalizadas no painel administrativo.</p>
-    </section>
-
     <section id="servicos" class="services-section section-wrap">
       <div class="section-heading"><span class="eyebrow">NOSSO MENU DE CUIDADOS</span><h2>Um mimo para cada <em>aumigo</em></h2><p>Escolha o cuidado que combina com seu companheiro.</p></div>
       <div class="service-grid">
@@ -70,33 +60,45 @@
       <p class="price-note"><span>♡</span> Valores e disponibilidade são confirmados no atendimento. Cada pet é único!</p>
     </section>
 
-    <section id="sobre" class="love-section">
-      <div class="love-inner section-wrap"><div class="love-stamp" aria-hidden="true"><span>feito com</span><strong>♡</strong><span>amor pet</span></div><div><span class="eyebrow">AQUI, CUIDAR É DEMONSTRAR AMOR</span><h2>Mais do que banho.<br><em>Um momento de carinho.</em></h2><p>A gente acredita que todo pet merece ser tratado com paciência, cuidado e muito amor. Nosso objetivo é que cada visita seja uma experiência tranquila para você e seu melhor amigo.</p><div class="location-pill"><span>📍</span><span><strong>Canoas, Rio Grande do Sul</strong><small>Atendimento na região. Consulte disponibilidade.</small></span></div></div></div>
-    </section>
-
     <section id="agendar" class="booking-section section-wrap">
       <div class="booking-intro"><span class="eyebrow">VAMOS MARCAR ESSE MOMENTO?</span><h2>O próximo pet<br><em>cheirosinho pode ser o seu!</em></h2><p>Preencha os detalhes e prepare-se para uma dose extra de fofura. O pedido só será enviado quando o WhatsApp oficial estiver configurado.</p><div class="booking-doodle">🐾 <span>lambeijos<br>e carinho!</span></div></div>
       <form id="booking-form" class="booking-form">
-        <div class="form-title"><span class="form-paw">🐾</span><div><h3>Agende um cuidado</h3><p>Conta pra gente um pouquinho sobre seu pet.</p></div></div>
-        <div class="form-grid">
-          <label>Seu nome<input name="ownerName" autocomplete="name" required placeholder="Como podemos te chamar?"></label>
-          <label>Seu WhatsApp<input name="phone" type="tel" autocomplete="tel" required placeholder="(51) 99999-9999"></label>
-          <label>Nome do pet<input name="petName" required placeholder="Nome do seu aumigo"></label>
-          <label>Seu pet é...<select name="species" required><option value="">Selecione</option><option>Cachorro</option><option>Gato</option><option>Outro</option></select></label>
-          <label>Porte do pet<select name="size" required><option value="">Selecione</option><option>Pequeno</option><option>Médio</option><option>Grande</option><option>Não sei informar</option></select></label>
-          <label>Serviço desejado<select id="service-select" name="service" required><option value="">Selecione um serviço</option><option>Banho</option><option>Tosa</option><option>Banho e tosa</option><option>Cuidados especiais</option></select></label>
-          <label>Data desejada<input name="date" type="date" id="booking-date" required></label>
-          <label>Período preferido<select name="period" required><option value="">Selecione</option><option>Manhã</option><option>Tarde</option><option>Tenho flexibilidade</option></select></label>
-          <label class="full-field">Alguma observação? <span class="optional">(opcional)</span><textarea name="notes" rows="3" placeholder="Conte algo importante sobre seu pet..."></textarea></label>
-        </div>
-        <button class="button button-primary submit-button" type="submit">Preparar pedido de agendamento <span>♡</span></button>
-        <p class="form-privacy">🔒 Seus dados são usados apenas para preparar o contato de agendamento neste site.</p>
+        <div class="form-title"><span class="form-paw">🐾</span><div><h3>Vamos cuidar do seu aumigo?</h3><p>Leva só um minutinho para preencher.</p></div></div>
+        <div class="booking-progress" aria-label="Três etapas do formulário"><span><b>1</b> Você</span><i></i><span><b>2</b> Seu pet</span><i></i><span><b>3</b> Agendamento</span></div>
+        <section class="form-section wizard-step is-active" data-step="1" aria-labelledby="owner-section-title">
+          <h4 id="owner-section-title"><span>01</span> Seus dados</h4>
+          <div class="form-grid">
+            <label>Seu nome completo<input name="ownerName" autocomplete="name" required maxlength="100" placeholder="Ex.: Ana Silva"></label>
+            <label>WhatsApp para contato<input name="phone" id="owner-phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="(51) 99999-9999" aria-describedby="phone-help"><small id="phone-help" class="field-help">Com DDD, para confirmarmos o pedido.</small></label>
+          </div>
+        </section>
+        <section class="form-section wizard-step" data-step="2" aria-labelledby="pet-section-title" hidden>
+          <h4 id="pet-section-title"><span>02</span> Sobre seu pet</h4>
+          <div class="form-grid">
+            <label>Nome do pet<input name="petName" required maxlength="60" placeholder="Como ele(a) se chama?"></label>
+            <label>Espécie<select name="species" required><option value="">Escolha uma opção</option><option>Cachorro</option><option>Gato</option><option>Outro</option></select></label>
+            <label>Raça <span class="optional">(opcional)</span><input name="breed" maxlength="60" placeholder="Ex.: Shih-tzu, vira-lata..."></label>
+            <label>Idade <span class="optional">(opcional)</span><input name="petAge" maxlength="30" placeholder="Ex.: 2 anos"></label>
+            <label class="full-field">Porte do pet<select name="size" required><option value="">Selecione o porte</option><option>Pequeno</option><option>Médio</option><option>Grande</option><option>Não sei informar</option></select></label>
+          </div>
+        </section>
+        <section class="form-section wizard-step" data-step="3" aria-labelledby="appointment-section-title" hidden>
+          <h4 id="appointment-section-title"><span>03</span> Como podemos ajudar?</h4>
+          <div class="form-grid">
+            <label>Serviço desejado<select id="service-select" name="service" required><option value="">Escolha o cuidado</option><option>Banho</option><option>Tosa</option><option>Banho e tosa</option><option>Cuidados especiais</option></select></label>
+            <label>Data desejada<input name="date" type="date" id="booking-date" required></label>
+            <label class="full-field">Melhor período<select name="period" required><option value="">Selecione o período</option><option>Manhã</option><option>Tarde</option><option>Tenho flexibilidade</option></select></label>
+            <label class="full-field">Alguma informação importante? <span class="optional">(opcional)</span><textarea name="notes" rows="3" maxlength="600" placeholder="Alergias, cuidados especiais, comportamento ou outra observação..."></textarea></label>
+          </div>
+        </section>
+        <div class="wizard-controls"><button class="button button-back" id="booking-back" type="button" hidden>← Voltar</button><button class="button button-primary" id="booking-next" type="button">Continuar <span>→</span></button><button class="button button-primary submit-button" id="booking-submit" type="submit" hidden>Solicitar agendamento <span>↗</span></button></div>
+        <p class="form-privacy">🔒 Seus dados serão incluídos na mensagem do WhatsApp para solicitar o agendamento. A data só fica confirmada após a resposta da equipe.</p>
         <div id="booking-feedback" class="booking-feedback" role="status" aria-live="polite" hidden></div>
       </form>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-main"><a class="brand footer-brand" href="#inicio"><span class="brand-mark">🐾</span><span>pet em <strong>casa</strong><small>cuidado com amor</small></span></a><p>Pequenos cuidados, grandes rabinhos abanando. ♡</p><a href="#agendar">Vamos conversar? <span>↗</span></a></div><div class="footer-bottom"><span>© <span id="year"></span> Pet em Casa</span><span>Feito com carinho em Canoas, RS <span class="heart">♥</span></span><a href="admin.html">Painel administrativo ↗</a><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+  <footer class="site-footer"><div class="footer-main"><a class="brand footer-brand" href="#inicio"><span class="brand-mark">🐾</span><span>pet em <strong>casa</strong><small>cuidado com amor</small></span></a><p>Pequenos cuidados, grandes rabinhos abanando. ♡</p><a href="#agendar">Vamos conversar? <span>↗</span></a></div><div class="footer-bottom"><span>© <span id="year"></span> Pet em Casa</span><span>Feito com carinho em Canoas, RS <span class="heart">♥</span></span><span class="made-by">Feito por <strong>Novaesweb</strong></span><a href="admin.html">Painel administrativo ↗</a><a href="#inicio">Voltar ao topo ↑</a></div></footer>
   <a class="floating-whatsapp" href="#agendar" aria-label="Ir para agendamento">♡ <span>Agendar</span></a>
 </body>
 </html>
