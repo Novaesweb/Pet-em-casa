@@ -50,6 +50,24 @@ function renderShowcase() {
       body.append(eyebrow, title, desc); card.append(img, body); grid.append(card);
     });
   }
+  const serviceCards = document.querySelectorAll(".service-card");
+  if (Array.isArray(content.services)) {
+    serviceCards.forEach((card, index) => {
+      const item = content.services[index];
+      if (!item) return;
+      const numberLabel = card.querySelector(".service-number");
+      const title = card.querySelector("h3");
+      const description = card.querySelector("p");
+      const illustration = card.querySelector(".service-illustration");
+      if (numberLabel) numberLabel.textContent = item.eyebrow || "";
+      if (title) title.textContent = item.title || "";
+      if (description) description.textContent = item.description || "";
+      if (illustration && item.image) {
+        const firstTextNode = [...illustration.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+        if (firstTextNode) firstTextNode.textContent = item.image;
+      }
+    });
+  }
   const number = String(content.whatsappNumber || "").replace(/\D/g, "");
   if (number.length >= 10) {
     document.querySelectorAll(".floating-whatsapp").forEach((link) => {
@@ -139,7 +157,8 @@ if (bookingForm) {
       details.notes ? "*Observações:* " + details.notes : ""
     ].filter(Boolean).join("\n");
 
-    const cleanNumber = WHATSAPP_NUMBER.replace(/\D/g, "");
+    const siteContent = readSiteContent();
+    const cleanNumber = String(siteContent.whatsappNumber || WHATSAPP_NUMBER).replace(/\D/g, "");
     if (cleanNumber.length >= 10) {
       const url = "https://wa.me/" + cleanNumber + "?text=" + encodeURIComponent(message);
       showFeedback("Tudo certo! Vamos abrir o WhatsApp para você revisar e enviar sua solicitação. O agendamento só fica confirmado após o retorno da equipe.");
