@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ee"><title>Painel administrativo | Pet em Casa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css"><script src="admin.js" defer></script>
+</head>
+<body>
+  <header class="admin-header"><a class="brand" href="index.html"><span class="brand-mark">🐾</span><span>pet em <strong>casa</strong><small>painel administrativo</small></span></a><a class="back-link" href="index.html">← Ver o site</a></header>
+  <main class="admin-wrap">
+    <div class="page-heading"><span class="eyebrow">ÁREA DE PERSONALIZAÇÃO</span><h1>Deixe o site com <em>a sua cara.</em></h1><p>Atualize as fotos, os textos do mostruário e o WhatsApp de contato.</p></div>
+    <div class="notice"><strong>Importante:</strong> esta primeira versão salva as alterações apenas neste navegador, usando armazenamento local. Ela ainda não tem login seguro nem banco de dados compartilhado. Não use como painel de produção até conectarmos autenticação e banco de dados.</div>
+    <form id="site-settings" class="panel-card">
+      <div class="card-heading"><div><h2>Contato e agendamento</h2><p>O número será usado nos botões de WhatsApp e no formulário.</p></div><span>01</span></div>
+      <label>WhatsApp oficial (com país e DDD, somente números)<input id="whatsapp" type="tel" inputmode="numeric" placeholder="Ex.: 5551999999999"></label>
+      <p class="field-help">Use o número real da loja. Não inclua espaços, parênteses ou traços.</p>
+      <button class="button" type="submit">Salvar contato</button>
+      <p id="settings-feedback" class="feedback" role="status" aria-live="polite"></p>
+    </form>
+    <section class="panel-card">
+      <div class="card-heading"><div><h2>Mostruário da loja</h2><p>Edite imagens, títulos e descrições que aparecem na página inicial.</p></div><span>02</span></div>
+      <div id="gallery-editor" class="editor-list"></div>
+      <div class="editor-actions"><button id="add-gallery" class="button button-light" type="button">＋ Adicionar foto ao mostruário</button><button id="save-gallery" class="button" type="button">Salvar mostruário</button></div>
+      <p id="gallery-feedback" class="feedback" role="status" aria-live="polite"></p>
+    </section>
+    <section class="panel-card">
+      <div class="card-heading"><div><h2>Descrição dos serviços</h2><p>Personalize os textos dos cartões de banho, tosa e cuidados especiais.</p></div><span>03</span></div>
+      <div id="services-editor" class="editor-list"></div>
+      <button id="save-services" class="button" type="button">Salvar descrições</button>
+      <p id="services-feedback" class="feedback" role="status" aria-live="polite"></p>
+    </section>
+    <div class="bottom-actions"><a href="index.html" class="button button-light">← Voltar ao site</a><button id="reset-content" class="button button-danger" type="button">Restaurar conteúdo inicial</button></div>
+  </main>
+  <footer>Pet em Casa · Painel de personalização · Ainda não conectado a um banco de dados.</footer>
+</body></html>
