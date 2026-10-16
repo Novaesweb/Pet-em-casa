@@ -13,7 +13,7 @@ const serviceSelect = document.querySelector("#service-select");
 const ownerPhone = document.querySelector("#owner-phone");
 
 function formatBrazilianPhone(value) {
-  const digits = String(value || "").replace(/\\D/g, "").slice(0, 11);
+  const digits = String(value || "").replace(/\D/g, "").slice(0, 11);
   if (digits.length <= 2) return digits ? "(" + digits : "";
   if (digits.length <= 6) return "(" + digits.slice(0, 2) + ") " + digits.slice(2);
   if (digits.length <= 10) return "(" + digits.slice(0, 2) + ") " + digits.slice(2, 6) + "-" + digits.slice(6);
@@ -161,7 +161,7 @@ if (bookingForm) {
       notes: String(data.get("notes") || "").trim()
     };
 
-    const phoneDigits = details.phone.replace(/\\D/g, "");
+    const phoneDigits = details.phone.replace(/\D/g, "");
     if (phoneDigits.length < 10 || phoneDigits.length > 11) {
       if (ownerPhone) {
         ownerPhone.setCustomValidity("Informe um WhatsApp brasileiro com DDD e 10 ou 11 números.");
