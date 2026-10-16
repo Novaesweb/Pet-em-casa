@@ -127,6 +127,58 @@ document.querySelectorAll("[data-service]").forEach((link) => {
   });
 });
 
+
+const wizardSteps = [...document.querySelectorAll(".wizard-step")];
+const progressItems = [...document.querySelectorAll(".booking-progress span")];
+const backButton = document.querySelector("#booking-back");
+const nextButton = document.querySelector("#booking-next");
+const submitButton = document.querySelector("#booking-submit");
+let activeBookingStep = 1;
+
+function renderBookingStep(step) {
+  activeBookingStep = Math.max(1, Math.min(3, step));
+  wizardSteps.forEach((section) => {
+    const active = Number(section.dataset.step) === activeBookingStep;
+    section.hidden = !active;
+    section.classList.toggle("is-active", active);
+  });
+  progressItems.forEach((item, index) => {
+    item.classList.toggle("is-current", index + 1 === activeBookingStep);
+    item.classList.toggle("is-complete", index + 1 < activeBookingStep);
+    const marker = item.querySelector("b");
+    if (marker) marker.textContent = index + 1 < activeBookingStep ? "✓" : String(index + 1);
+  });
+  if (backButton) backButton.hidden = activeBookingStep === 1;
+  if (nextButton) nextButton.hidden = activeBookingStep === 3;
+  if (submitButton) submitButton.hidden = activeBookingStep !== 3;
+}
+function validateActiveStep() {
+  const section = wizardSteps.find((item) => Number(item.dataset.step) === activeBookingStep);
+  if (!section) return true;
+  const fields = [...section.querySelectorAll("input,select,textarea")];
+  for (const field of fields) {
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      field.focus();
+      return false;
+    }
+  }
+  return true;
+}
+if (wizardSteps.length) {
+  renderBookingStep(1);
+  nextButton?.addEventListener("click", () => {
+    if (validateActiveStep()) {
+      renderBookingStep(activeBookingStep + 1);
+      document.querySelector("#agendar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+  backButton?.addEventListener("click", () => {
+    renderBookingStep(activeBookingStep - 1);
+    document.querySelector("#agendar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 function showFeedback(message, type = "success") {
   feedback.hidden = false;
   feedback.className = "booking-feedback" + (type === "error" ? " error" : "");
