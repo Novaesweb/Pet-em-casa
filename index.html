@@ -77,20 +77,36 @@
     <section id="agendar" class="booking-section section-wrap">
       <div class="booking-intro"><span class="eyebrow">VAMOS MARCAR ESSE MOMENTO?</span><h2>O próximo pet<br><em>cheirosinho pode ser o seu!</em></h2><p>Preencha os detalhes e prepare-se para uma dose extra de fofura. O pedido só será enviado quando o WhatsApp oficial estiver configurado.</p><div class="booking-doodle">🐾 <span>lambeijos<br>e carinho!</span></div></div>
       <form id="booking-form" class="booking-form">
-        <div class="form-title"><span class="form-paw">🐾</span><div><h3>Agende um cuidado</h3><p>Conta pra gente um pouquinho sobre seu pet.</p></div></div>
-        <div class="form-grid">
-          <label>Seu nome<input name="ownerName" autocomplete="name" required placeholder="Como podemos te chamar?"></label>
-          <label>Seu WhatsApp<input name="phone" type="tel" autocomplete="tel" required placeholder="(51) 99999-9999"></label>
-          <label>Nome do pet<input name="petName" required placeholder="Nome do seu aumigo"></label>
-          <label>Seu pet é...<select name="species" required><option value="">Selecione</option><option>Cachorro</option><option>Gato</option><option>Outro</option></select></label>
-          <label>Porte do pet<select name="size" required><option value="">Selecione</option><option>Pequeno</option><option>Médio</option><option>Grande</option><option>Não sei informar</option></select></label>
-          <label>Serviço desejado<select id="service-select" name="service" required><option value="">Selecione um serviço</option><option>Banho</option><option>Tosa</option><option>Banho e tosa</option><option>Cuidados especiais</option></select></label>
-          <label>Data desejada<input name="date" type="date" id="booking-date" required></label>
-          <label>Período preferido<select name="period" required><option value="">Selecione</option><option>Manhã</option><option>Tarde</option><option>Tenho flexibilidade</option></select></label>
-          <label class="full-field">Alguma observação? <span class="optional">(opcional)</span><textarea name="notes" rows="3" placeholder="Conte algo importante sobre seu pet..."></textarea></label>
-        </div>
-        <button class="button button-primary submit-button" type="submit">Preparar pedido de agendamento <span>♡</span></button>
-        <p class="form-privacy">🔒 Seus dados são usados apenas para preparar o contato de agendamento neste site.</p>
+        <div class="form-title"><span class="form-paw">🐾</span><div><h3>Vamos cuidar do seu aumigo?</h3><p>Leva só um minutinho para preencher.</p></div></div>
+        <div class="booking-progress" aria-label="Três etapas do formulário"><span><b>1</b> Você</span><i></i><span><b>2</b> Seu pet</span><i></i><span><b>3</b> Agendamento</span></div>
+        <section class="form-section" aria-labelledby="owner-section-title">
+          <h4 id="owner-section-title"><span>01</span> Seus dados</h4>
+          <div class="form-grid">
+            <label>Seu nome completo<input name="ownerName" autocomplete="name" required maxlength="100" placeholder="Ex.: Ana Silva"></label>
+            <label>WhatsApp para contato<input name="phone" id="owner-phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="(51) 99999-9999" aria-describedby="phone-help"><small id="phone-help" class="field-help">Com DDD, para confirmarmos o pedido.</small></label>
+          </div>
+        </section>
+        <section class="form-section" aria-labelledby="pet-section-title">
+          <h4 id="pet-section-title"><span>02</span> Sobre seu pet</h4>
+          <div class="form-grid">
+            <label>Nome do pet<input name="petName" required maxlength="60" placeholder="Como ele(a) se chama?"></label>
+            <label>Espécie<select name="species" required><option value="">Escolha uma opção</option><option>Cachorro</option><option>Gato</option><option>Outro</option></select></label>
+            <label>Raça <span class="optional">(opcional)</span><input name="breed" maxlength="60" placeholder="Ex.: Shih-tzu, vira-lata..."></label>
+            <label>Idade <span class="optional">(opcional)</span><input name="petAge" maxlength="30" placeholder="Ex.: 2 anos"></label>
+            <label class="full-field">Porte do pet<select name="size" required><option value="">Selecione o porte</option><option>Pequeno</option><option>Médio</option><option>Grande</option><option>Não sei informar</option></select></label>
+          </div>
+        </section>
+        <section class="form-section" aria-labelledby="appointment-section-title">
+          <h4 id="appointment-section-title"><span>03</span> Como podemos ajudar?</h4>
+          <div class="form-grid">
+            <label>Serviço desejado<select id="service-select" name="service" required><option value="">Escolha o cuidado</option><option>Banho</option><option>Tosa</option><option>Banho e tosa</option><option>Cuidados especiais</option></select></label>
+            <label>Data desejada<input name="date" type="date" id="booking-date" required></label>
+            <label class="full-field">Melhor período<select name="period" required><option value="">Selecione o período</option><option>Manhã</option><option>Tarde</option><option>Tenho flexibilidade</option></select></label>
+            <label class="full-field">Alguma informação importante? <span class="optional">(opcional)</span><textarea name="notes" rows="3" maxlength="600" placeholder="Alergias, cuidados especiais, comportamento ou outra observação..."></textarea></label>
+          </div>
+        </section>
+        <button class="button button-primary submit-button" type="submit">Solicitar agendamento <span>↗</span></button>
+        <p class="form-privacy">🔒 Seus dados serão incluídos na mensagem do WhatsApp para solicitar o agendamento. A data só fica confirmada após a resposta da equipe.</p>
         <div id="booking-feedback" class="booking-feedback" role="status" aria-live="polite" hidden></div>
       </form>
     </section>
