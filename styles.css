@@ -29,3 +29,62 @@
 .floating-whatsapp{background:#6b35c8}
 @media(max-width:850px){.hero-art{min-height:380px}.booking-intro{position:static}}
 @media(max-width:650px){.hero-art{min-height:310px;border-radius:27px;margin-top:18px}.hero-art .note-one{left:-5px;top:24px}.hero-art .note-two{right:-5px;bottom:25px}.booking-form{padding:22px 16px}.booking-progress{gap:5px;padding:11px 8px;font-size:9px}.booking-progress span{gap:4px}.booking-progress b{width:21px;height:21px}.form-section{padding-bottom:18px;margin-bottom:18px}.submit-button{font-size:12px;gap:10px}}
+
+
+/* Novaesweb refresh: identidade intensa, página enxuta e agendamento em etapas */
+:root{--ink:#21143f;--muted:#655a7b;--cream:#fff8f5;--mint:#d9fff0;--mint-dark:#007f67;--peach:#ffe0d8;--lilac:#e9ddff;--line:#e7def4;--shadow:0 20px 55px rgba(45,18,91,.14)}
+body{background:linear-gradient(180deg,#fff8f5 0%,#fff 52%,#fff8f5 100%)}
+.announcement{background:linear-gradient(100deg,#4e16a8,#7b2de2 55%,#ed416d);color:#fff}
+.brand strong{color:#f04e65}.brand-mark{background:#f0e5ff;color:#5d20ba}
+.brand small{color:#7c6a9c}
+.nav-cta{background:linear-gradient(110deg,#5716bd,#852fe0)}
+.main-nav>a:not(.nav-cta):hover,.text-link:hover{color:#7626ce}
+.hero{padding-top:22px;padding-bottom:55px;min-height:490px}
+.hero h1{letter-spacing:-2.7px}
+.hero h1 em,.section-heading h2 em,.love-inner h2 em,.booking-intro h2 em{color:#ef4165}
+.hero-art{min-height:370px;border:4px solid #fff;box-shadow:0 25px 65px rgba(78,22,168,.23)}
+.hero-art:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(78,22,168,.06),rgba(237,65,109,.22));pointer-events:none}
+.hero-art .floating-note{z-index:2;border:1px solid #f1e6ff}
+.button-primary{background:linear-gradient(115deg,#6419c6,#8a2de0 55%,#ed416d);box-shadow:0 10px 26px rgba(115,35,203,.25)}
+.button-primary:hover{box-shadow:0 14px 32px rgba(115,35,203,.34)}
+.benefits{padding-top:18px;padding-bottom:18px;background:#fff;border:1px solid #f0e8fa;border-radius:20px;box-shadow:0 12px 32px rgba(45,18,91,.06);margin-top:-8px;position:relative;z-index:2}
+.benefit-icon.mint{background:#d6fff0;color:#007f67}.benefit-icon.peach{background:#ffe0d8;color:#db3d5b}.benefit-icon.lilac{background:#e9ddff;color:#6920c4}
+.services-section{padding-top:56px;padding-bottom:48px}
+.section-heading{margin-bottom:25px}
+.section-heading h2{margin:10px 0;font-size:clamp(32px,4vw,44px)}
+.service-grid{gap:16px}
+.service-card{border:1px solid rgba(89,39,155,.08);border-radius:24px;box-shadow:0 12px 35px rgba(45,18,91,.06);transition:transform .2s,box-shadow .2s}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(45,18,91,.13)}
+.card-mint{background:linear-gradient(145deg,#e0fff2,#c9f6e5)}.card-peach{background:linear-gradient(145deg,#fff0e8,#ffddd4)}.card-lilac{background:linear-gradient(145deg,#f2eaff,#e4d6ff)}
+.service-card a{color:#651cc5}
+.price-note{margin-top:17px}
+.booking-section{padding-top:55px;padding-bottom:68px;gap:36px;align-items:start}
+.booking-intro{position:static;padding-top:20px}
+.booking-intro h2{font-size:clamp(34px,4vw,48px)}
+.booking-form{border:1px solid #e9ddff;border-radius:26px;box-shadow:0 25px 70px rgba(72,23,137,.15);padding:26px;background:#fff}
+.form-title{gap:13px}
+.form-paw{background:#e9ddff;color:#671cc7}
+.booking-progress{background:#f6f0ff;color:#655184}
+.booking-progress b{background:linear-gradient(135deg,#6519c6,#ed416d)}
+.booking-progress i{background:#d8c5fa}
+.booking-progress span.is-current{color:#4f16a8}
+.booking-progress span.is-complete b{background:#00a982}
+.form-section[hidden],.wizard-step[hidden]{display:none!important}
+.form-section{animation:step-enter .22s ease-out}
+@keyframes step-enter{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:#8b40e7;box-shadow:0 0 0 4px #eee3ff}
+.form-section h4 span{background:#ffe4e9;color:#d92f56}
+.wizard-controls{display:flex;gap:10px;margin-top:20px}
+.wizard-controls .button{min-height:49px}
+.wizard-controls #booking-next,.wizard-controls #booking-submit{flex:1}
+.button-back{background:#f2ecfb;color:#5a269e}
+.button-back:hover{background:#e9ddff}
+.submit-button{margin-top:0;background:linear-gradient(110deg,#f04c58,#e52d82);box-shadow:0 10px 25px #e94d5b30}
+.site-footer{background:linear-gradient(115deg,#21143f,#37105f 55%,#4e16a8);padding-top:30px}
+.footer-bottom{align-items:center}
+.made-by{color:#e7d9ff}
+.made-by strong{color:#ff8194;letter-spacing:.3px}
+.floating-whatsapp{background:linear-gradient(115deg,#6419c6,#ed416d);box-shadow:0 12px 30px rgba(100,25,198,.32)}
+@media(max-width:850px){.hero{min-height:0;padding-top:30px}.hero-art{min-height:340px}.booking-section{gap:24px}.booking-intro{padding-top:0}}
+@media(max-width:650px){.hero{padding-top:25px;padding-bottom:52px}.hero-art{min-height:275px;border-radius:24px}.benefits{margin-top:0;border-radius:17px}.services-section{padding-top:48px;padding-bottom:28px}.section-heading h2{font-size:34px}.service-grid{gap:12px}.service-card{padding:20px}.booking-section{padding-top:42px;padding-bottom:55px}.booking-intro h2{font-size:35px}.booking-form{padding:20px 15px}.booking-progress{font-size:9px}.wizard-controls{gap:8px}.wizard-controls .button{padding:14px 12px}.footer-bottom{gap:12px}.made-by{width:100%}}
+@media(prefers-reduced-motion:reduce){.form-section{animation:none}}
