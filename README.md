@@ -1,34 +1,34 @@
 # Pet em Casa 🐾
 
-Site responsivo para apresentar serviços de banho, tosa e cuidados pet em Canoas, RS.
+Site responsivo para apresentar os serviços de banho, tosa e cuidados pet em Canoas, RS, com mostruário editável e painel de personalização.
 
 ## Arquivos
 
-- `index.html`: estrutura e conteúdo da página.
+- `index.html`: página principal, serviços, mostruário e formulário de agendamento.
 - `styles.css`: identidade visual responsiva.
-- `script.js`: menu mobile, validação do formulário e integração preparada para WhatsApp.
+- `script.js`: menu mobile, mostruário e fluxo de agendamento por WhatsApp.
+- `admin.html`: painel de personalização.
+- `admin.css`: estilos do painel.
+- `admin.js`: editor de fotos, descrições e número de WhatsApp.
 
-## Como visualizar
+## Usar localmente
 
-Abra `index.html` no navegador. Para desenvolvimento local, também pode usar a extensão Live Server do VS Code.
+Abra `index.html` no navegador para visualizar o site e `admin.html` para abrir o painel.
 
-## Configuração necessária antes de receber agendamentos
+## Atenção: limites da primeira versão do painel
 
-No início de `script.js`, configure:
+O painel usa `localStorage`, então as alterações só ficam salvas naquele navegador e dispositivo. Não há login real, banco de dados nem sincronização entre dispositivos. O painel não é seguro para uso público/produção ainda. Para um painel administrativo completo, a próxima etapa é conectar autenticação segura e banco de dados (por exemplo, Supabase ou Firebase), validar permissões no servidor e armazenar imagens em um serviço de storage.
 
-```js
-const WHATSAPP_NUMBER = "55DDDNUMERO";
-```
+## WhatsApp
 
-Use o número oficial completo com código do país e DDD, somente números. O valor acima é apenas um formato ilustrativo, não um número funcional.
-
-Até esse número ser configurado, o formulário valida os campos, mas informa claramente que não enviou nem salvou a solicitação. O site ainda não possui banco de dados nem painel administrativo, e o envio pelo WhatsApp depende de a pessoa confirmar a mensagem no aplicativo.
+No painel, informe o número oficial no formato internacional, somente números, por exemplo, país + DDD + número. Não use o exemplo como número real. Ao enviar um formulário, o visitante será encaminhado ao WhatsApp para revisar e confirmar a mensagem. O pedido não fica confirmado até a loja responder.
 
 ## Antes de publicar
 
-- Confirmar o WhatsApp oficial.
-- Confirmar preços, horários e serviços oferecidos.
-- Confirmar endereço/área de atendimento e políticas de agendamento.
-- Testar o formulário em celular e computador.
+- Configurar e testar o número oficial de WhatsApp.
+- Confirmar preços, horários, endereço/área de atendimento e serviços oferecidos.
+- Trocar as fotos de demonstração pelas fotos autorizadas da loja.
+- Conectar o painel a autenticação e banco de dados para sincronização e segurança.
+- Testar em celular e computador.
 
-**Este repositório não foi publicado nem conectado a um serviço de deploy por esta alteração.**
+**Nenhum deploy foi feito por esta alteração.**
